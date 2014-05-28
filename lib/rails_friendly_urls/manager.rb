@@ -1,5 +1,5 @@
 module RailsFriendlyUrls
-	module Manager
+  module Manager
 
     def self.included(klass)
       klass.send(:extend, RailsFriendlyUrls::Manager::ClassMethods)
@@ -8,10 +8,10 @@ module RailsFriendlyUrls
 
     module ClassMethods
 
-  		def inject_urls(mapper)
+      def inject_urls(mapper)
         self.each_url do |f_url|
-        	mapper.get f_url.slug, to: "#{f_url.controller}##{f_url.action}", defaults: f_url.defaults
-        	mapper.get f_url.path, to: mapper.redirect(f_url.slug)
+          mapper.get f_url.slug, to: "#{f_url.controller}##{f_url.action}", defaults: f_url.defaults
+          mapper.get f_url.path, to: mapper.redirect(f_url.slug)
         end
       end
 
@@ -47,5 +47,5 @@ module RailsFriendlyUrls
 
     end
 
-	end
+  end
 end

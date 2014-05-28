@@ -5,7 +5,7 @@ require "rails_friendly_urls/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "rails_friendly_urls"
+  s.name        = "Rails Friendly URLs"
   s.version     = RailsFriendlyUrls::VERSION
   s.authors     = ["Carlos Alonso Perez", "Maria Turnau"]
   s.email       = ["carlos@mrcalonso.com"]
@@ -13,11 +13,12 @@ Gem::Specification.new do |s|
   s.summary     = "TODO: Summary of RailsFriendlyUrls."
   s.description = "TODO: Description of RailsFriendlyUrls."
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.0.2"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "jazz_hands"
 end
