@@ -1,8 +1,5 @@
 Dummy::Application.routes.draw do
 
-  get '/a/b/c', to: redirect('/d')
-  get '/d', to: 'dummy#dummy'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

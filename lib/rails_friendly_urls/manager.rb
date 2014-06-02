@@ -1,3 +1,5 @@
+require_relative './route_set'
+
 module RailsFriendlyUrls
   module Manager
 
