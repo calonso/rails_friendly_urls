@@ -1,4 +1,8 @@
 Dummy::Application.routes.draw do
+
+  RailsFriendlyUrls::Manager.inject_urls self
+
+  resources :my_friendly_urls, only: [:create, :index]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

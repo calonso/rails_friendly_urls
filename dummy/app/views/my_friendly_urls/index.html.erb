@@ -1,0 +1,40 @@
+<h1>Friendly URLs List</h1>
+
+<%= form_for @url do |f| %>
+
+  <%= f.error_messages %>
+
+  <%= f.label :path %>
+  <%= f.text_field :path %>
+
+  <%= f.label :slug %>
+  <%= f.text_field :slug %>
+
+  <%= f.submit %>
+
+<% end %>
+
+<h1>Friendly URLs List</h1>
+
+<table>
+
+  <tr>
+    <th>Slug</th>
+    <th>Path</th>
+    <th>Controller</th>
+    <th>Action</th>
+    <th>Defaults</th>
+  </tr>
+
+  <% @urls.each do |url| %>
+
+    <tr>
+      <td><%= url.slug %></td>
+      <td><%= url.path %></td>
+      <td><%= url.controller %></td>
+      <td><%= url.action %></td>
+      <td><%= url.defaults %></td>
+    </tr>
+
+  <% end %>
+</table>
