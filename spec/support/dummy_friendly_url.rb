@@ -7,6 +7,7 @@ class DummyFriendlyURL
 
   def initialize(path)
     @path = path
+    @defaults = {}
   end
 
 end

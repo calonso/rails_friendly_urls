@@ -9,6 +9,10 @@ module RailsFriendlyUrls
       self.defaults = route_info.reject { |k, v| [:controller, :action].include? k }
     end
 
+    def slug
+      raise MethodNotImplementedError.new "#{self.class.name} needs to implement slug method!"
+    end
+
     def path
       raise MethodNotImplementedError.new "#{self.class.name} needs to implement path method!"
     end
@@ -23,6 +27,10 @@ module RailsFriendlyUrls
 
     def defaults
       raise MethodNotImplementedError.new "#{self.class.name} needs to implement defaults method!"
+    end
+
+    def slug=(slug)
+      raise MethodNotImplementedError.new "#{self.class.name} needs to implement slug= method!"
     end
 
     def path=(path)

@@ -9,36 +9,30 @@ module ActionDispatch
         extras = environment[:extras] || {}
 
         begin
-          env = Rack::MockRequest.env_for(path, {:method => method})
+          env = Rack::MockRequest.env_for(path, {:method => method, :params => extras})
         rescue URI::InvalidURIError => e
           raise ActionController::RoutingError, e.message
         end
 
         req = @request_class.new(env)
-        @router.recognize(req) do |route, _matches, params|
-          params.merge!(extras)
+        @router.recognize(req) do |route, matches, params|
           params.each do |key, value|
             if value.is_a?(String)
-              value = value.dup.force_encoding(Encoding::BINARY)
+              value = value.dup.force_encoding(Encoding::BINARY) if value.encoding_aware?
               params[key] = URI.parser.unescape(value)
             end
           end
-          old_params = env[::ActionDispatch::Routing::RouteSet::PARAMETERS_KEY]
-          env[::ActionDispatch::Routing::RouteSet::PARAMETERS_KEY] = (old_params || {}).merge(params)
+
           dispatcher = route.app
           while dispatcher.is_a?(Mapper::Constraints) && dispatcher.matches?(env) do
             dispatcher = dispatcher.app
           end
 
-          if dispatcher.is_a?(Dispatcher)
-            if dispatcher.controller(params, false)
-              dispatcher.prepare_params!(params)
-              return params
-            else
-              raise ActionController::RoutingError, "A route matches #{path.inspect}, but references missing controller: #{params[:controller].camelize}Controller"
-            end
+          if dispatcher.is_a?(Dispatcher) && dispatcher.controller(params, false)
+            dispatcher.prepare_params!(params)
+            return params
           elsif dispatcher.is_a?(Redirect)
-            return { :status => dispatcher.status, :path => dispatcher.block }
+            return { status: 301, path: dispatcher.block.call({}, nil) }
           end
         end
 
@@ -50,9 +44,7 @@ module ActionDispatch
       end
 
       def friendly(path)
-        mod = RailsFriendlyUrls::Manager
-        binding.pry
-        @all_friendly ||= Hash[*Betrails::Cms::Path.all.map { |f_url| [f_url.path, f_url.slug] }.flatten]
+        @all_friendly ||= Hash[*RailsFriendlyUrls::Manager.urls.map { |f_url| [f_url.path, f_url.slug] }.flatten]
         @all_friendly[path]        
       end
 

@@ -3,10 +3,14 @@ describe RailsFriendlyUrls::Manager do
 
   describe '#inject_urls' do
 
-    subject { DummyManagerImpl }
+    subject { RailsFriendlyUrls::Manager }
 
     let(:url) {
-      DummyFriendlyURL.new '/a/b/c', '/friendly1', 'application', 'acti', a:1, b:2
+      f_url = DummyFriendlyURL.new '/a/b/c'
+      f_url.slug = '/friendly1'
+      f_url.controller = 'application'
+      f_url.action = 'index'
+      f_url
     }
 
     let(:route_set) { Rails.application.routes }

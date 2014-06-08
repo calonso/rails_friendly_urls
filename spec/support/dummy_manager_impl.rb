@@ -7,6 +7,10 @@ class RailsFriendlyUrls::Manager
     @@urls = urls
   end
 
+  def self.urls
+    @@urls
+  end
+
   def self.each_url(&block)
     @@urls.each do |url| 
       yield url
