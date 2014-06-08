@@ -6,6 +6,7 @@ Rails Gem to easily configure any url as a friendlier one.
 ##Features
 
 * Allows customisation of **ABSOLUTELY** any url into a friendlier one.
+* Takes care of the parameters you defined in your original route and will pass them into the controller when the friendly url is invoked.
 * Takes care of named routes and both url and path helpers so that there's no need to change a single line of code when adding a new friendly url.
 * When a friendly URL is defined to substitute another one. The non-friendly one is automatically configured to redirect to the friendly path so that you're not penalised by search engines.
 * Doesn't force any particular storage for the friendly url's data.
@@ -74,3 +75,8 @@ To run it simply:
 5. Save
 6. Restart rails server
 7. Refresh the page and see what happened in your browser's address bar!
+
+##Caveats
+
+* At the moment, only parameters from the url are parsed, parameters in the query string will not be considered.
+* At the moment, the rails application has to be restarted for the new urls to start working.
