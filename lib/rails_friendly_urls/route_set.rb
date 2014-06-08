@@ -2,6 +2,7 @@
 module ActionDispatch
   module Routing
     class RouteSet
+
       def recognize_path(path, environment = {})
         method = (environment[:method] || "GET").to_s.upcase
         path = Journey::Router::Utils.normalize_path(path) unless path =~ %r{://}
@@ -36,12 +37,53 @@ module ActionDispatch
             else
               raise ActionController::RoutingError, "A route matches #{path.inspect}, but references missing controller: #{params[:controller].camelize}Controller"
             end
-          elsif dispatcher.is_a?(PathRedirect)
+          elsif dispatcher.is_a?(Redirect)
             return { :status => dispatcher.status, :path => dispatcher.block }
           end
         end
 
         raise ActionController::RoutingError, "No route matches #{path.inspect}"
+      end
+
+      def invalidate_friendlies
+        @all_friendly = nil
+      end
+
+      def friendly(path)
+        mod = RailsFriendlyUrls::Manager
+        binding.pry
+        @all_friendly ||= Hash[*Betrails::Cms::Path.all.map { |f_url| [f_url.path, f_url.slug] }.flatten]
+        @all_friendly[path]        
+      end
+
+      def url_for(options)
+        finalize!
+        options = (options || {}).reverse_merge!(default_url_options)
+
+        handle_positional_args(options)
+
+        user, password = extract_authentication(options)
+        path_segments  = options.delete(:_path_segments)
+        script_name    = options.delete(:script_name)
+
+        path = (script_name.blank? ? _generate_prefix(options) : script_name.chomp('/')).to_s
+
+        path_options = options.except(*RESERVED_OPTIONS)
+        path_options = yield(path_options) if block_given?
+
+        path_addition, params = generate(path_options, path_segments || {})
+        path << path_addition
+        params.merge!(options[:params] || {})
+
+        path = friendly(path) || path
+
+        ActionDispatch::Http::URL.url_for(options.merge!({
+          :path => path,
+          :params => params,
+          :user => user,
+          :password => password
+        }))
+
       end
     end
   end

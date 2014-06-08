@@ -1,6 +1,7 @@
 
-class DummyManagerImpl
-  include RailsFriendlyUrls::Manager
+require 'rails_friendly_urls'
+
+class RailsFriendlyUrls::Manager
 
   def self.urls=(urls)
     @@urls = urls

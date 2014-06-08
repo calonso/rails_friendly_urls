@@ -1,14 +1,12 @@
 
 class DummyFriendlyURL
+
+  include RailsFriendlyUrls::FriendlyUrl
   
   attr_accessor :path, :slug, :controller, :action, :defaults
 
-  def initialize(path, slug, controller, action, defaults)
+  def initialize(path)
     @path = path
-    @slug = slug
-    @controller = controller
-    @action = action
-    @defaults = defaults
   end
 
 end
