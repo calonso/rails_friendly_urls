@@ -1,15 +1,11 @@
 
-class DummyManagerImpl
-  include RailsFriendlyUrls::Manager
+class RailsFriendlyUrls::Manager 
 
   def self.urls=(urls)
-    @@urls = urls
+    @urls = urls
   end
 
-  def self.each_url(&block)
-    @@urls.each do |url| 
-      yield url
-    end
+  def self.urls
+    @urls
   end
-
 end
