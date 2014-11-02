@@ -16,20 +16,6 @@ module RailsFriendlyUrls
       Rails.application.reload_routes!
     end
 
-    def set_destination_data!
-      route_info = Rails.application.routes.recognize_path self.path
-      self.controller = route_info[:controller]
-      self.action = route_info[:action]
-      self.defaults = route_info.reject { |k, v| [:controller, :action].include? k }
-    end
-
-    def set_destination_data
-      begin
-        set_destination_data!
-      rescue ActionController::RoutingError
-      end
-    end
-
     def self.url_for(path)
       self.instance.friendly path
     end

@@ -1,6 +1,4 @@
 
-require 'spec_helper'
-
 shared_examples 'a successfully injected friendly url' do
   let(:route_set) { Rails.application.routes }
 
