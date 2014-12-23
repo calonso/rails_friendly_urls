@@ -42,7 +42,11 @@ describe RailsFriendlyUrls::FriendlyUrl do
       end
 
       context 'using parameters in query string' do
-        it 'successfully assigns defaults'
+        subject { DummyFriendlyURL.new '/test?lang=es-ES' }
+
+        it 'successfully assigns defaults' do
+          subject.defaults.should == { lang: 'es-ES' }
+        end
       end
     end
   end

@@ -16,6 +16,7 @@ module ActionDispatch
         req = @request_class.new(env)
         @router.recognize(req) do |route, _matches, params|
           params.merge!(extras)
+          params.merge!(req.parameters.symbolize_keys)
           params.each do |key, value|
             if value.is_a?(String)
               value = value.dup.force_encoding(Encoding::BINARY)

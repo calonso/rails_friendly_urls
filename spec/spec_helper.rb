@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] = "test"
 
 Bundler.setup
 Bundler.require :default
+Bundler.require :development
 
 require File.expand_path("../../dummy/config/environment.rb",  __FILE__)
 require 'rspec/rails'
