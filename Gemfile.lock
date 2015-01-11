@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     Rails Friendly URLs (0.0.1)
-      rails (~> 4.1.6)
+      rails (~> 4.0)
 
 PATH
   remote: /Users/calonso/dev/rails
@@ -63,6 +63,9 @@ GEM
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
+    generator_spec (0.9.3)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     hike (1.2.3)
     i18n (0.6.11)
     json (1.8.1)
@@ -122,6 +125,7 @@ PLATFORMS
 
 DEPENDENCIES
   Rails Friendly URLs!
+  generator_spec
   pry-byebug
   rails!
   rspec-rails
