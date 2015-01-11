@@ -12,4 +12,7 @@ end
     EOS
   end
 
+  def inject_urls
+    insert_into_file "config/routes.rb", "\n  RailsFriendlyUrls::Manager.inject_urls self", :after => ".routes.draw do\n"
+  end
 end

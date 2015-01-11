@@ -6,6 +6,8 @@ describe RailsFriendlyUrls::InstallGenerator, type: :generator do
 
   before do
     prepare_destination
+    mkdir File.join(destination_root, 'config')
+    cp 'spec/support/dummy_routes.rb', File.join(destination_root, 'config/routes.rb')
     run_generator
   end
 
@@ -20,6 +22,15 @@ class RailsFriendlyUrls::Manager
   def self.urls
     raise NotImplementedError.new 'RailsFriendlyUrls::Manager::urls not implemented at config/initializers/friendly_urls_manager.rb'
   end
+end
+    EOS
+  end
+
+  it 'injects the Rails Friendly Urls in routes' do
+    assert_file "config/routes.rb", <<-EOS 
+Dummy::Application.routes.draw do
+
+  RailsFriendlyUrls::Manager.inject_urls self
 end
     EOS
   end
