@@ -1,5 +1,8 @@
+
+require 'singleton'
+
 module RailsFriendlyUrls
 end
 
-require_relative 'rails_friendly_urls/manager'
-require_relative 'rails_friendly_urls/friendly_url'
+require 'rails_friendly_urls/manager'
+require 'rails_friendly_urls/friendly_url'

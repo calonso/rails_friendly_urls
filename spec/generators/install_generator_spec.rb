@@ -28,9 +28,10 @@ end
 
   it 'injects the Rails Friendly Urls in routes' do
     assert_file "config/routes.rb", <<-EOS 
-Dummy::Application.routes.draw do
+Rails4::Application.routes.draw do
 
   RailsFriendlyUrls::Manager.inject_urls self
+
 end
     EOS
   end

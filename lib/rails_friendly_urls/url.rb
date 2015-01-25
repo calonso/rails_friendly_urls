@@ -23,6 +23,20 @@ module ActionDispatch
           result << "##{Journey::Router::Utils.escape_fragment(options[:anchor].to_param.to_s)}" if options[:anchor]
           result
         end
+
+=begin
+def path_for(options)
+          byebug
+          path  = options[:script_name].to_s.chomp("/")
+          path << options[:path] if options.key?(:path)
+
+          add_trailing_slash(path) if options[:trailing_slash]
+          add_params(path, options[:params]) if options.key?(:params)
+          add_anchor(path, options[:anchor]) if options.key?(:anchor)
+
+          RailsFriendlyUrls::Manager.url_for path
+        end
+=end
       end
     end
   end

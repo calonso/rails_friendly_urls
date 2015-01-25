@@ -1,11 +1,15 @@
 # Configure Rails Environment
-ENV["RAILS_ENV"] = "test"
-
 Bundler.setup
 Bundler.require :default
 Bundler.require :development
 
-require File.expand_path("../../dummy/config/environment.rb",  __FILE__)
+require 'rails_friendly_urls'
+
+ENV["RAILS_ENV"] = "test"
+ENV['DATABASE_URL'] = 'sqlite3://localhost/:memory:'
+
+require 'apps/rails4'
+
 require 'rspec/rails'
 
 Rails.backtrace_cleaner.remove_silencers!

@@ -1,3 +1,4 @@
+require 'rails/generators'
 
 class RailsFriendlyUrls::InstallGenerator < Rails::Generators::Base
   desc 'Creates a boilerplate Friendly Urls Manager with an empty implementation for you to complete.'
@@ -13,6 +14,6 @@ end
   end
 
   def inject_urls
-    insert_into_file "config/routes.rb", "\n  RailsFriendlyUrls::Manager.inject_urls self", :after => ".routes.draw do\n"
+    insert_into_file "config/routes.rb", "\n  RailsFriendlyUrls::Manager.inject_urls self\n", :after => ".routes.draw do\n"
   end
 end

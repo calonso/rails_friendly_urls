@@ -1,12 +1,15 @@
-require_relative './route_set'
-require_relative './url'
+
+require 'rails_friendly_urls/route_set'
+require 'rails_friendly_urls/url'
 
 module RailsFriendlyUrls
   class Manager
     include Singleton
 
     def self.inject_urls(mapper)
-      self.urls.each do |f_url|
+      list = self.urls || []
+      Rails.logger.warn "Injecting empty Friendly URLs List!!" if list.empty?
+      list.each do |f_url|
         mapper.get f_url.slug, to: "#{f_url.controller}##{f_url.action}", defaults: f_url.defaults
         mapper.get f_url.path, to: mapper.redirect(f_url.slug)
       end

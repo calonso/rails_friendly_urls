@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-gem 'rails', path: '/Users/calonso/dev/rails'
-
 # Declare your gem's dependencies in rails_friendly_urls.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
