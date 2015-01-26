@@ -1,7 +1,4 @@
 
-require 'rails_friendly_urls/route_set'
-require 'rails_friendly_urls/url'
-
 module RailsFriendlyUrls
   class Manager
     include Singleton

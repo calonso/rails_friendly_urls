@@ -11,7 +11,6 @@ module Rails4
     config.cache_classes = true
 
     config.eager_load = false
-    config.serve_static_assets  = true
     config.static_cache_control = "public, max-age=3600"
 
     config.consider_all_requests_local       = true
@@ -28,7 +27,7 @@ module Rails4
     config.middleware.delete "ActionDispatch::BestStandardsSupport"
     config.secret_key_base = '49837489qkuweoiuoqwehisuakshdjksadhaisdy78o34y138974xyqp9rmye8yrpiokeuioqwzyoiuxftoyqiuxrhm3iou1hrzmjk'
     routes.append do
-      get "/" => "welcome#index"
+      get "/" => "application#index"
     end
   end
 end
