@@ -6,9 +6,23 @@ Bundler.require :development
 require 'rails_friendly_urls'
 
 ENV["RAILS_ENV"] = "test"
-ENV['DATABASE_URL'] = 'sqlite3://localhost/:memory:'
 
-require 'apps/rails4'
+case "#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}"
+when '3.2'
+  ENV['DATABASE_URL'] = 'sqlite3://localhost/:memory:'
+  require 'apps/rails3_2'
+when '4.0'
+  ENV['DATABASE_URL'] = 'sqlite3://localhost/:memory:'
+  require 'apps/rails4'
+when '4.1'
+  ENV['DATABASE_URL'] = 'sqlite3::memory:'
+  require 'apps/rails4'
+when '4.2'
+  ENV['DATABASE_URL'] = 'sqlite3::memory:'
+  require 'apps/rails4'
+else
+  raise NotImplementedError.new "Rails Friendly URLs gem doesn't support Rails #{Rails.version}"
+end
 
 require 'rspec/rails'
 
