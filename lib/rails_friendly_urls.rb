@@ -1,5 +1,6 @@
 
 require 'singleton'
+require 'rails'
 
 module RailsFriendlyUrls
 

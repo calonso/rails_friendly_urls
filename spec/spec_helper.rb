@@ -7,7 +7,7 @@ require 'rails_friendly_urls'
 
 ENV["RAILS_ENV"] = "test"
 
-case "#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}"
+case RailsFriendlyUrls.rails_version
 when '3.2'
   ENV['DATABASE_URL'] = 'sqlite3://localhost/:memory:'
   require 'apps/rails3_2'

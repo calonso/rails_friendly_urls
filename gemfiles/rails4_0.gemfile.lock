@@ -2,6 +2,7 @@ PATH
   remote: ../
   specs:
     rails_friendly_urls (0.0.1)
+      rails (~> 4.0)
 
 GEM
   remote: https://rubygems.org/

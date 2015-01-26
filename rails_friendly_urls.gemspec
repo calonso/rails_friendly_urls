@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
   s.require_paths = ["lib"]
 
+  s.add_dependency 'rails', '~> 4.0'
+
   s.add_development_dependency 'appraisal'
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

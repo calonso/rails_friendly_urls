@@ -15,18 +15,18 @@ describe RailsFriendlyUrls::FriendlyUrl do
     subject { DummyFriendlyURL.new path }
 
     it 'successfully assigns controller' do
-      subject.controller.should == controller
+      expect(subject.controller).to eq controller
     end
 
     it 'successfully assigns action' do
-      subject.action.should == action
+      expect(subject.action).to eq action
     end
 
     describe 'defaults' do
 
       context 'with no parameters' do
         it 'works with no parameters' do
-          subject.defaults.should == {}
+          expect(subject.defaults).to eq({})
         end
       end
 
@@ -37,7 +37,7 @@ describe RailsFriendlyUrls::FriendlyUrl do
         subject { DummyFriendlyURL.new '/es-ES/test' }
 
         it 'successfully assigns defaults' do
-          subject.defaults.should == { lang: 'es-ES' }
+          expect(subject.defaults).to eq lang: 'es-ES'
         end
       end
 
@@ -45,7 +45,7 @@ describe RailsFriendlyUrls::FriendlyUrl do
         subject { DummyFriendlyURL.new '/test?lang=es-ES' }
 
         it 'successfully assigns defaults' do
-          subject.defaults.should == { lang: 'es-ES' }
+          expect(subject.defaults).to eq lang: 'es-ES'
         end
       end
     end

@@ -9,19 +9,19 @@ shared_examples 'a successfully injected friendly url' do
 
   it 'successfully injects the url' do
     route_info = Rails.application.routes.recognize_path url.slug
-    route_info.delete(:controller).should == url.controller
-    route_info.delete(:action).should == url.action
-    route_info.should == url.defaults
+    expect(route_info.delete(:controller)).to eq url.controller
+    expect(route_info.delete(:action)).to eq url.action
+    expect(route_info).to eq url.defaults
   end
 
   it 'adds the corresponding redirection route' do
     route_info = Rails.application.routes.recognize_path url.path
-    route_info[:status].should == 301
-    route_info[:path].should == url.slug
+    expect(route_info[:status]).to eq 301
+    expect(route_info[:path]).to eq url.slug
   end
 
   it 'keeps path helpers working without changing code' do
-    route_set.url_helpers.a_b_c_path.should == url.slug
+    expect(route_set.url_helpers.a_b_c_path).to eq url.slug
   end
 
   after do
