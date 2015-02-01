@@ -17,10 +17,12 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
   s.require_paths = ["lib"]
 
-  s.add_dependency 'rails', '~> 4.0'
+  s.add_dependency 'rails'
 
   s.add_development_dependency 'appraisal'
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'rspec-core', '~> 2.4'
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency 'generator_spec'
+  s.add_development_dependency 'byebug'
 end
