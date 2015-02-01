@@ -17,3 +17,4 @@ log/*
 .yardoc
 _yardoc
 doc/
+gemfiles/*.lock
