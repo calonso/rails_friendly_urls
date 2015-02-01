@@ -12,7 +12,7 @@ Rails Gem to easily configure any url as a friendlier one.
 
 ##Example application
 
-You can see the gem running live in the following url:
+You can see the gem running live in the following url: [https://rails-friendly-urls-test.herokuapp.com/](https://rails-friendly-urls-test.herokuapp.com/)
 
 ##Installation
 
