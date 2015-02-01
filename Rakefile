@@ -14,15 +14,12 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-begin
-  require 'rspec/core/rake_task'
 
-  RSpec::Core::RakeTask.new(:spec)
+require 'rspec/core/rake_task'
 
-  task :default => :spec
-rescue LoadError
-  # no rspec available
-end
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec
 
 if !ENV["APPRAISAL_INITIALIZED"] && !ENV["TRAVIS"]
   task default: :appraisal

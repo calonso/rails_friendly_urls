@@ -1,6 +1,6 @@
-#Rails Friendly Urls Engine
+#Rails Friendly Urls Engine [![Build Status](https://travis-ci.org/calonso/rails_friendly_urls.svg?branch=master)](https://travis-ci.org/calonso/rails_friendly_urls)
 
-Rails Gem to easily configure any url as a friendlier one.
+Rails Gem to easily configure any url as a friendlier one. 
 
 ##Features
 
