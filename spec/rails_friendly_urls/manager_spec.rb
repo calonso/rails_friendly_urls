@@ -11,7 +11,7 @@ shared_examples 'a successfully injected friendly url' do
     route_info = Rails.application.routes.recognize_path url.slug
     expect(route_info.delete(:controller)).to eq url.controller
     expect(route_info.delete(:action)).to eq url.action
-    expect(route_info).to eq url.defaults
+    expect(route_info).to eq (url.defaults.reject { |k, v| [:controller, :action].include? k })
   end
 
   it 'adds the corresponding redirection route' do

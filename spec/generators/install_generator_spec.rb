@@ -7,7 +7,7 @@ describe RailsFriendlyUrls::InstallGenerator, type: :generator do
   before do
     prepare_destination
     mkdir File.join(destination_root, 'config')
-    cp 'spec/support/dummy_routes.rb', File.join(destination_root, 'config/routes.rb')
+    cp routes_file, File.join(destination_root, 'config/routes.rb')
     run_generator
   end
 
@@ -27,13 +27,7 @@ end
   end
 
   it 'injects the Rails Friendly Urls in routes' do
-    assert_file "config/routes.rb", <<-EOS 
-Rails4::Application.routes.draw do
-
-  RailsFriendlyUrls::Manager.inject_urls self
-
-end
-    EOS
+    assert_file "config/routes.rb", routes_contents
   end
 
 end

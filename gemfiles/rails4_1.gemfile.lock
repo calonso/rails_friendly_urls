@@ -4,14 +4,6 @@ PATH
     rails_friendly_urls (0.0.1)
       rails
 
-PATH
-  remote: /Users/calonso/dev/appraisal
-  specs:
-    appraisal (1.1.0.pre.beta)
-      bundler
-      rake
-      thor (>= 0.14.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,6 +33,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    appraisal (1.0.2)
+      bundler
+      rake
+      thor (>= 0.14.0)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     byebug (3.5.1)
@@ -117,7 +113,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  appraisal!
+  appraisal
   byebug
   generator_spec
   rails (~> 4.1.0)

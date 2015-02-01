@@ -5,7 +5,7 @@ require 'rails/test_help'
 
 require 'rails_friendly_urls' # our gem
 
-module Rails4
+module RailsFriendlyUrlsApp
   class Application < Rails::Application
     config.root = File.expand_path("../../..", __FILE__)
     config.cache_classes = true
@@ -45,4 +45,4 @@ class ApplicationController < ActionController::Base
 
 end
 
-Rails4::Application.initialize!
+RailsFriendlyUrlsApp::Application.initialize!
