@@ -21,7 +21,7 @@ The source code for this example project is available here: [https://github.com/
 Installing this gem only requires you to add the following line to your `Gemfile`
 
 ```ruby
-gem 'rails_friendly_urls', git: 'https://github.com/calonso/rails_friendly_urls'
+gem 'rails_friendly_urls'
 ```
 
 Run
