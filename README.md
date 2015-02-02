@@ -14,7 +14,7 @@ Rails Gem to easily configure any url as a friendlier one.
 
 You can see the gem running live in the following url: [https://rails-friendly-urls-test.herokuapp.com/](https://rails-friendly-urls-test.herokuapp.com/)
 
-The source code for this example project is available here: (https://github.com/calonso/rails_friendly_urls_test)[https://github.com/calonso/rails_friendly_urls_test]
+The source code for this example project is available here: [https://github.com/calonso/rails_friendly_urls_test](https://github.com/calonso/rails_friendly_urls_test)
 
 ##Installation
 
