@@ -4,7 +4,7 @@ Rails Gem to easily configure any url as a friendlier one.
 
 ##Features
 
-* Allows customisation of **ABSOLUTELY** any url into a friendlier one.
+* Allows customisation of **ABSOLUTELY** any url into a SEO friendlier one.
 * Takes care of the parameters you defined in your original route and will pass them into the controller when the friendly url is invoked.
 * Takes care of named routes and both url and path helpers so that there's no need to change a single line of code when adding a new friendly url.
 * When a friendly URL is defined to substitute another one. The non-friendly one is automatically configured to redirect to the friendly path so that you're not penalised by search engines.
