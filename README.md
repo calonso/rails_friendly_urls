@@ -77,3 +77,13 @@ As part of the installation process, a new line is inserted on top of the `route
 
 * At the moment, only GET requests are supported.
 * At the moment, the rails application has to be restarted for the new urls to start working.
+
+## Contributing
+
+1. Fork it ( https://github.com/calonso/rails_friendly_urls/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+
+Released under the MIT-LICENSE.
