@@ -1,6 +1,7 @@
-#Rails Friendly Urls Engine [![Build Status](https://travis-ci.org/calonso/rails_friendly_urls.svg?branch=master)](https://travis-ci.org/calonso/rails_friendly_urls) [![calonso/rails_friendly_urls API Documentation](https://www.omniref.com/github/calonso/rails_friendly_urls.png)](https://www.omniref.com/github/calonso/rails_friendly_urls)
+#Rails Friendly Urls Engine
+[![Build Status](https://travis-ci.org/calonso/rails_friendly_urls.svg?branch=master)](https://travis-ci.org/calonso/rails_friendly_urls) [![Code Climate](https://codeclimate.com/github/calonso/rails_friendly_urls/badges/gpa.svg)](https://codeclimate.com/github/calonso/rails_friendly_urls) [![Code Climate](https://codeclimate.com/github/calonso/rails_friendly_urls/badges/gpa.svg)](https://codeclimate.com/github/calonso/rails_friendly_urls) [![calonso/rails_friendly_urls API Documentation](https://www.omniref.com/github/calonso/rails_friendly_urls.png)](https://www.omniref.com/github/calonso/rails_friendly_urls)
 
-Rails Gem to easily configure any url as a friendlier one. 
+Rails Gem to easily configure any url as a friendlier one.
 
 ##Features
 
@@ -35,7 +36,7 @@ $ rails generate rails_friendly_urls:install
 
 Here I detail you the steps that I followed to set up the friendly urls engine in the example application, so most of them should be the same for you, some others slightly different, but don't worry, you'll see appropriated explanations while reading this steps.
 
-###1. Friendly URLs Storage 
+###1. Friendly URLs Storage
 
 First of all we need to decide our urls storage technology, in my case I decided to use a standard activerecord rails model, but I guess that a YAML file could do the job as well or any other persistence technology.
 
@@ -59,7 +60,7 @@ In my example project this is the final implementation:
 
 ```
 # FriendlyUrls Manager contents
-class RailsFriendlyUrls::Manager 
+class RailsFriendlyUrls::Manager
   def self.urls
     ::FriendlyUrl.all
   end

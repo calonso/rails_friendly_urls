@@ -16,3 +16,4 @@ gemfile:
 branches:
   only:
     - master
+env: CODECLIMATE_REPO_TOKEN=8ebdfa9166770d54f7e4a2b25b8958c77046ca57fdd7cabbab4c63942cdf2959

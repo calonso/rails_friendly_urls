@@ -1,13 +1,14 @@
 # Configure Rails Environment
-Bundler.setup
-Bundler.require :default
-Bundler.require :development
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
-require 'rails_friendly_urls'
+Bundler.setup
 
 ENV["RAILS_ENV"] = "test"
 
-case RailsFriendlyUrls.rails_version
+require 'rails'
+
+case "#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}"
 when '3.2'
   ENV['DATABASE_URL'] = 'sqlite3://localhost/:memory:'
   require 'apps/rails3_2'
@@ -24,9 +25,11 @@ else
   raise NotImplementedError.new "Rails Friendly URLs gem doesn't support Rails #{Rails.version}"
 end
 
-require 'rspec/rails'
+Bundler.require :default
+Bundler.require :development
 
-Rails.backtrace_cleaner.remove_silencers!
+require 'rspec/rails'
+require 'rails_friendly_urls'
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/*.rb"].each { |f| require f }
@@ -44,5 +47,5 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = :random
 end
