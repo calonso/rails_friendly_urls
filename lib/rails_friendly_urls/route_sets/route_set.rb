@@ -47,8 +47,8 @@ module ActionDispatch
             else
               raise ActionController::RoutingError, "A route matches #{path.inspect}, but references missing controller: #{params[:controller].camelize}Controller"
             end
-          elsif dispatcher.is_a?(PathRedirect)
-            return { :status => dispatcher.status, :path => dispatcher.block }
+          elsif dispatcher.is_a?(redirect_class)
+            return { status: 301, path: path_from_dispatcher(dispatcher) }
           end
         end
 
@@ -66,6 +66,30 @@ module ActionDispatch
         defined?(::ActionDispatch::Http::Parameters::PARAMETERS_KEY) ?
           ::ActionDispatch::Http::Parameters::PARAMETERS_KEY :
             ::ActionDispatch::Routing::RouteSet::PARAMETERS_KEY
+      end
+
+      #
+      # INTERNAL: Helps reusing code by deciding which class to consider
+      # as the redirection depending on the Rails version running.
+      #
+      # @returns [ActionDispatch::Routing::Redirect] or [ActionDispatch::Routing::PathRedirect]
+      def redirect_class
+        Rails::VERSION::MAJOR == 3 ? Redirect : PathRedirect
+      end
+
+      #
+      # INTERNAL: Helps reusing code by obtaining the path from the Rails'
+      # ActionDispatch::Routing::Dispatcher depending on the Rails version
+      # running.
+      #
+      # @param [ActionDispatch::Routing::Dispatcher] in use.
+      # @return [String] the destination path of the redirection.
+      def path_from_dispatcher(dispatcher)
+        if Rails::VERSION::MAJOR == 3
+          dispatcher.block.call({}, nil)
+        else
+          dispatcher.block
+        end
       end
     end
   end

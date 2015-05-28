@@ -20,13 +20,12 @@ end
 
 require 'rails_friendly_urls/manager'
 require 'rails_friendly_urls/friendly_url'
+require 'rails_friendly_urls/route_sets/route_set'
 
 case RailsFriendlyUrls.rails_version
 when '4.2'
-  require 'rails_friendly_urls/route_sets/rails4'
   require 'rails_friendly_urls/urls/rails4_2'
 when '4.0', '4.1'
-  require 'rails_friendly_urls/route_sets/rails4'
   require 'rails_friendly_urls/urls/rails4_0'
 when '3.2'
   require 'rails_friendly_urls/route_sets/rails3'
