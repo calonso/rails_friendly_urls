@@ -1,7 +1,16 @@
-
 module ActionDispatch
   module Routing
+    #
+    # Monkey Patched Rails' class ActionDispatch::Routing::RouteSet.
+    #
+    # @author Carlos Alonso
+    #
     class RouteSet
+      #
+      # Monkey Patched Rails' method: Includes a call to RailsFriendlyUrls::Manager.url_for
+      # when the Rails' URL Helper is building a url for a path to use the
+      # configured SEO Friendly substutition if any.
+      #
       def url_for(options = {})
         finalize!
         options = (options || {}).reverse_merge!(default_url_options)
@@ -21,7 +30,7 @@ module ActionDispatch
         path << path_addition
         params.merge!(options[:params] || {})
 
-        path = friendly(path) || path
+        path = RailsFriendlyUrls::Manager.url_for path
 
         ActionDispatch::Http::URL.url_for(options.merge!({
           :path => path,
@@ -31,11 +40,10 @@ module ActionDispatch
         }))
       end
 
-      def friendly(path)
-        @all_friendly ||= Hash[*RailsFriendlyUrls::Manager.urls.map { |f_url| [f_url.path, f_url.slug] }.flatten]
-        @all_friendly[path]
-      end
-      
+      #
+      # Monkey Patched Rails' method to recognize redirections as well as, for some
+      # reason, the original Rails' method doesn't.
+      #
       def recognize_path(path, environment = {})
         method = (environment[:method] || "GET").to_s.upcase
         path = Journey::Router::Utils.normalize_path(path) unless path =~ %r{://}
