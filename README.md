@@ -1,5 +1,5 @@
 #Rails Friendly Urls Engine
-[![Build Status](https://travis-ci.org/calonso/rails_friendly_urls.svg?branch=master)](https://travis-ci.org/calonso/rails_friendly_urls) [![Code Climate](https://codeclimate.com/github/calonso/rails_friendly_urls/badges/gpa.svg)](https://codeclimate.com/github/calonso/rails_friendly_urls) [![Code Climate](https://codeclimate.com/github/calonso/rails_friendly_urls/badges/gpa.svg)](https://codeclimate.com/github/calonso/rails_friendly_urls) [![calonso/rails_friendly_urls API Documentation](https://www.omniref.com/github/calonso/rails_friendly_urls.png)](https://www.omniref.com/github/calonso/rails_friendly_urls)
+[![Build Status](https://travis-ci.org/calonso/rails_friendly_urls.svg?branch=master)](https://travis-ci.org/calonso/rails_friendly_urls) [![Code Climate](https://codeclimate.com/github/calonso/rails_friendly_urls/badges/gpa.svg)](https://codeclimate.com/github/calonso/rails_friendly_urls) [![Test Coverage](https://codeclimate.com/github/calonso/rails_friendly_urls/badges/coverage.svg)](https://codeclimate.com/github/calonso/rails_friendly_urls/coverage) [![calonso/rails_friendly_urls API Documentation](https://www.omniref.com/github/calonso/rails_friendly_urls.png)](https://www.omniref.com/github/calonso/rails_friendly_urls)
 
 Rails Gem to easily configure any url as a friendlier one.
 
